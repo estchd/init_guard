@@ -45,6 +45,7 @@
 
 #[allow(unused_imports)]
 #[macro_use]
+#[macro_reexport]
 extern crate lazy_static;
 
 #[macro_export]
@@ -52,6 +53,7 @@ macro_rules! init_guard {
     ($global_vis:vis $global_name:ident) => {
         $global_vis mod $global_name {
             use std::sync::{Mutex, Once};
+            use lazy_static::lazy_static;
             lazy_static! {
                 static ref MUTEX_ONCE: Mutex<Once> = Mutex::<Once>::new(Once::new());
             }
