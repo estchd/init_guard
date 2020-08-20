@@ -1,6 +1,6 @@
 [package]
 name = "init_guard"
-version = "1.0.0"
+version = "0.1.0"
 authors = ["Erik Schulze <erikmail3333@gmail.com>"]
 edition = "2018"
 
