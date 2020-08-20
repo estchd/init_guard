@@ -1,6 +1,6 @@
 [package]
 name = "init_guard"
-version = "1.0.1"
+version = "1.1.1"
 authors = ["Erik Schulze <erikmail3333@gmail.com>"]
 edition = "2018"
 license = "MIT"
@@ -10,3 +10,6 @@ readme = "README.md"
 categories = ["concurrency"]
 keywords = ["syncronization", "initialization"]
 description = "A Synchronization Primitive for guarding against double initialization"
+
+[dependencies]
+lazy_static = "1.4.0"

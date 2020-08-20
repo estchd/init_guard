@@ -43,23 +43,29 @@
 //! }
 //! ```
 
+#[allow(unused_imports)]
+#[macro_use]
+extern crate lazy_static;
+
 #[macro_export]
 macro_rules! init_guard {
     ($global_vis:vis $global_name:ident) => {
         $global_vis mod $global_name {
             use std::sync::{Mutex, Once};
-            static $global_name: Mutex<Once> = Mutex::<Once>::new(Once::new());
+            lazy_static! {
+                static ref MUTEX_ONCE: Mutex<Once> = Mutex::<Once>::new(Once::new());
+            }
 
             pub fn has_init() -> bool {
-                let init_once = $global_name.lock().unwrap();
-                return init_once.is_completed();
+                let once = MUTEX_ONCE.lock().unwrap();
+                return once.is_completed();
             }
 
             pub fn init() -> Result<(),()> {
-                let init_once = $global_name.lock().unwrap();
-                if init_once.is_completed() {return Err(()); }
+                let once = MUTEX_ONCE.lock().unwrap();
+                if once.is_completed() {return Err(()); }
 
-                init_once.call_once(|| {});
+                once.call_once(|| {});
                 Ok(())
             }
         }
