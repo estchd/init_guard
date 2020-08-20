@@ -45,8 +45,8 @@
 
 #[allow(unused_imports)]
 #[macro_use]
-#[macro_reexport]
 extern crate lazy_static;
+use lazy_static::lazy_static;
 
 #[macro_export]
 macro_rules! init_guard {
