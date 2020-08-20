@@ -10,5 +10,3 @@ readme = "README.md"
 categories = ["concurrency"]
 keywords = ["syncronization", "initialization"]
 description = "A Synchronization Primitive for guarding against double initialization"
-
-[dependencies]
